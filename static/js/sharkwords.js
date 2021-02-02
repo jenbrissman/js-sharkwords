@@ -46,7 +46,7 @@ const disableLetterButton = (buttonEl) => {
     //
     const isLetterInWord = (letter) => {
       const val = $(`div.${letter}`)[0] !== undefined;
-      console.log(val)
+      console.log(val) 
       return val;
       }
 
@@ -63,9 +63,18 @@ const disableLetterButton = (buttonEl) => {
     // message. Otherwise, increment `numWrong` and update the shark image.
     //
     const handleWrongGuess = () => {
-      // Replace this with your code
+      if (numWrong !== 5) {;
+        numWrong += 1;
+      
+        let sharkPic = $('img');
+        sharkPic.attr('src', `static/images/guess${numWrong}.png`);
+      }  
+    
+      else {
+        $("letter-box").attr("disabled", true);
+        $("#play-again").css({ display: `block`});
+      }  
     };
-
     //  Reset game state. Called before restarting the game.
     //
     const resetGame = () => {
